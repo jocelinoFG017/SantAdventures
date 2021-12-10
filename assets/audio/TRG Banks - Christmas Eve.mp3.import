@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/TRG Banks - Christmas Eve.mp3-273213b7f7a33b4db5df2bf301b14427.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/TRG Banks - Christmas Eve.mp3"
+dest_files=[ "res://.import/TRG Banks - Christmas Eve.mp3-273213b7f7a33b4db5df2bf301b14427.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

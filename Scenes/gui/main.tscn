@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/audio/Dee Yan-Key - Schneeflöckchen, Weißröckchen.mp3" type="AudioStream" id=1]
+[ext_resource path="res://Scenes/gui/gui.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/gui/snowflake.png" type="Texture" id=3]
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[node name="main" type="Node"]
+
+[node name="gui" parent="." instance=ExtResource( 2 )]
+margin_left = -4.0
+margin_top = 3.0
+margin_right = -4.0
+margin_bottom = 3.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 275, -21 )
+amount = 2
+lifetime = 3.0
+speed_scale = 0.1
+randomness = 0.05
+draw_order = 1
+process_material = SubResource( 1 )
+texture = ExtResource( 3 )
+
+[node name="Particles2D2" type="Particles2D" parent="."]
+position = Vector2( 506, -54 )
+amount = 1
+lifetime = 2.5
+speed_scale = 0.09
+randomness = 0.05
+draw_order = 1
+process_material = SubResource( 1 )
+texture = ExtResource( 3 )
+
+[node name="Particles2D3" type="Particles2D" parent="."]
+position = Vector2( 940, -25 )
+amount = 4
+lifetime = 2.5
+speed_scale = 0.2
+randomness = 0.05
+draw_order = 1
+process_material = SubResource( 1 )
+texture = ExtResource( 3 )
+
+[node name="Particles2D4" type="Particles2D" parent="."]
+position = Vector2( 58, -45 )
+amount = 5
+lifetime = 3.0
+speed_scale = 0.2
+randomness = 0.05
+draw_order = 1
+process_material = SubResource( 1 )
+texture = ExtResource( 3 )
+
+[node name="Particles2D5" type="Particles2D" parent="."]
+position = Vector2( 708, -57 )
+amount = 3
+lifetime = 3.0
+speed_scale = 0.1
+randomness = 0.05
+draw_order = 1
+process_material = SubResource( 1 )
+texture = ExtResource( 3 )

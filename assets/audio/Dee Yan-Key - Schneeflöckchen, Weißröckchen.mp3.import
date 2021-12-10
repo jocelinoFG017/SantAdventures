@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Dee Yan-Key - Schneeflöckchen, Weißröckchen.mp3-1f67ba8860aef10013b82cbb109302f9.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Dee Yan-Key - Schneeflöckchen, Weißröckchen.mp3"
+dest_files=[ "res://.import/Dee Yan-Key - Schneeflöckchen, Weißröckchen.mp3-1f67ba8860aef10013b82cbb109302f9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
