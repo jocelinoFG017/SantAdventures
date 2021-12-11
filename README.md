@@ -3,7 +3,7 @@
 
 <br>
 
-#### Oh não! a bolsa do papai noel estava com os presentes estava rasgada e eles acabaram caindo. Cabe a você ajudar o bom velhinho a encontrá-los.
+#### Oh não! a bolsa do papai noel que estava com os presentes, estava rasgada e eles acabaram caindo. Cabe a você ajudar o bom velhinho a encontrá-los.
 
 <br>
 
@@ -25,6 +25,6 @@
 
 <br>
 
-### How to play
+### How to play ?
 
 - Only mouse button(left click)
