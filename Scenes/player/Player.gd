@@ -5,66 +5,42 @@ extends KinematicBody2D
 #export(int) var gravity
 const velX = 400
 const grav = 1500
+
+enum{IDLE, JUMP, RUNNING, DEAD}
+
 var velocity = Vector2(0,0) 
 
 var jump = false
 var jump_release = false
+var controled_jump = false
 
+onready var mask = collision_mask
+onready var layer = collision_layer
 #  variaveis de estado
-#var state
+var status = RUNNING
 #var anim
 #var new_anim
 
-#enum{IDLE, JUMP, RUN}
+
 
 
 func _ready():
 	#change_state(IDLE)
 	set_process_input(true)
-	
-#func change_state(new_state):
-	
-	#state = new_state
-	
-	#match state:
-	#	IDLE:
-	#		new_anim = "idle"
-	#	RUN:
-	#		new_anim = "run"
-	#	JUMP:
-	#		new_anim = "jump"
-
-
-#func get_input():
-	#var left = Input.is_action_pressed("left")
-	#var right = Input.is_action_pressed("right")
-#	var jump = Input.is_action_just_pressed("up")
-	
-	#velocity.x = 0
-	
-	#if right:
-	#	velocity.x += run_speed
-	#	$AnimatedSprite.flip_h = false
-	
-#	if left:
-#		velocity.x -= run_speed
-#		$AnimatedSprite.flip_h = true
-	
-#	if jump:
-#		velocity.y = jump_speed
-	
-#	if state == IDLE and velocity.x != 0:
-#		change_state(RUN)
-#	if state == RUN and velocity.x == 0:
-#		change_state(IDLE)
-#	if state in [IDLE,RUN] and !is_on_floor():
-#		change_state(JUMP)
-#	if state == JUMP and is_on_floor():
-#		change_state(IDLE)
-	#if alguamcoisa:
-		#pass
 
 func _physics_process(delta):
+	if status == RUNNING:
+		running(delta)
+	elif status == DEAD:
+		dead(delta)
+	if status != DEAD:
+		if position.y > ProjectSettings.get_setting("display/window/size/height"):
+			killed()
+	
+	jump = false
+	jump_release = false
+
+func running(delta):
 	velocity.y += grav * delta
 	velocity.x = velX
 	velocity = move_and_slide(velocity, Vector2(0,-1))
@@ -72,20 +48,20 @@ func _physics_process(delta):
 	if is_on_floor():
 		$AnimatedSprite.play("walk")
 		if jump:
-			velocity.y = -800
+			jump(1000, true)
 	else:
 		$AnimatedSprite.play("jump")
-		if jump_release:
-			velocity.y = 0
+		if jump_release and velocity.y < 0 and controled_jump:
+			velocity.y *= 0.2
 		
-	jump = false
-	jump_release = false
-#	velocity.y += gravity * delta
-	#get_input()
-##	if new_anim != anim:
-	#	anim = new_anim
-	#	$AnimatedSprite.play(anim)
-	#velocity = move_and_slide(velocity, Vector2(0,-1))
+
+func dead(delta):
+	translate(velocity * delta)
+	velocity.y += grav * delta
+	$AnimatedSprite.visible = false
+	get_tree().change_scene("res://Scenes/levels/selector/LevelSelector.tscn")
+	
+	
 
 func _input(event):
 	if event is InputEventScreenTouch:
@@ -93,3 +69,17 @@ func _input(event):
 			jump = true
 		else:
 			jump_release = true
+
+func jump(force, controled):
+	velocity.y = -force
+	controled_jump = controled
+
+func killed():
+	if status != DEAD:
+		status = DEAD
+		collision_layer = 0
+		collision_mask = 0
+		velocity = Vector2(0, -1000)
+		$AudioStreamPlayer.play()
+		yield(get_tree().create_timer(0.2), "timeout")
+		$AudioStreamPlayer.stop()

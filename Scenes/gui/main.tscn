@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/audio/Dee Yan-Key - Schneeflöckchen, Weißröckchen.mp3" type="AudioStream" id=1]
+[ext_resource path="res://assets/audio/Dee-Yan-Key-Schneeflöckchen_-Weißröckchen.wav" type="AudioStream" id=1]
 [ext_resource path="res://Scenes/gui/gui.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/gui/snowflake.png" type="Texture" id=3]
 

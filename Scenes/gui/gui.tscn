@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/gui/PoloNorte.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/gui/freegui/png/botao-exp.png" type="Texture" id=2]
@@ -6,10 +6,18 @@
 [ext_resource path="res://assets/gui/freegui/png/botao-click.png" type="Texture" id=4]
 [ext_resource path="res://assets/audio/mixkit-video-game-mystery-alert-234.wav" type="AudioStream" id=5]
 [ext_resource path="res://Scenes/gui/gui.gd" type="Script" id=6]
+[ext_resource path="res://assets/gui/freegui/png/aseChange/buttons/exit.png" type="Texture" id=7]
+[ext_resource path="res://assets/gui/freegui/png/aseChange/buttons/exit-g.png" type="Texture" id=8]
+[ext_resource path="res://assets/gui/freegui/png/aseChange/buttons/exit-r.png" type="Texture" id=9]
+[ext_resource path="res://assets/gui/freegui/png/aseChange/buttons/cred.png" type="Texture" id=10]
+[ext_resource path="res://assets/gui/freegui/png/aseChange/buttons/cred-g.png" type="Texture" id=11]
+[ext_resource path="res://assets/gui/freegui/png/aseChange/buttons/cred-r.png" type="Texture" id=12]
 
 [node name="gui" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 2.0
+margin_right = 2.0
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true,
@@ -42,4 +50,38 @@ __meta__ = {
 [node name="playSound" type="AudioStreamPlayer" parent="TextureButton"]
 stream = ExtResource( 5 )
 
+[node name="TextureButton2" type="TextureButton" parent="."]
+margin_left = 28.0
+margin_top = 494.0
+margin_right = 117.0
+margin_bottom = 582.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playSound" type="AudioStreamPlayer" parent="TextureButton2"]
+stream = ExtResource( 5 )
+
+[node name="TextureButton3" type="TextureButton" parent="."]
+margin_left = 931.0
+margin_top = 494.0
+margin_right = 1020.0
+margin_bottom = 582.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playSound" type="AudioStreamPlayer" parent="TextureButton3"]
+stream = ExtResource( 5 )
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_TextureButton2_pressed"]
+[connection signal="pressed" from="TextureButton3" to="." method="_on_TextureButton3_pressed"]

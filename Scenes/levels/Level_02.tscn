@@ -1,0 +1,147 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/levels/Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/items/FinalFase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/items/gifts/gift.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/enemies/spikeman.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/audio/TRG-Banks-Christmas-Eve.wav" type="AudioStream" id=5]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+
+
+func _ready():
+	pass
+
+
+func _on_gift_body_entered(body):
+	$AudioStreamPlayer2D.play()
+	$AnimatedSprite.visible = false
+	collision_mask = 0
+	$queueTimer.start()
+
+
+func _on_queueTimer_timeout():
+	queue_free()
+"
+
+[node name="Level_02" instance=ExtResource( 1 )]
+
+[node name="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
+position = Vector2( 515, 285.375 )
+scale = Vector2( 0.587361, 0.730963 )
+
+[node name="Snow" parent="." index="1"]
+tile_data = PoolIntArray( 131210, 0, 0, 131211, 0, 0, 131212, 0, 0, 131213, 0, 0, 196686, 0, 0, 196687, 0, 0, 196688, 0, 0, 196689, 0, 0, 196690, 0, 0, 196691, 0, 0, 196692, 0, 0, 196693, 0, 0, 196745, 0, 0, 196746, 0, 0, 196750, 0, 0, 262220, 0, 0, 262221, 0, 0, 262279, 0, 0, 262280, 0, 0, 262281, 0, 0, 262286, 0, 0, 262323, 0, 0, 262324, 0, 0, 262325, 0, 0, 262326, 0, 0, 262327, 0, 0, 262335, 0, 0, 262336, 0, 0, 327751, 0, 0, 327752, 0, 0, 327753, 0, 0, 327799, 0, 0, 327800, 0, 0, 327801, 0, 0, 327814, 0, 0, 327822, 0, 0, 327854, 0, 0, 327855, 0, 0, 327856, 0, 0, 327857, 0, 0, 327858, 0, 0, 327864, 0, 0, 327865, 0, 0, 327866, 0, 0, 327867, 0, 0, 327868, 0, 0, 327869, 0, 0, 327872, 0, 0, 393333, 0, 0, 393334, 0, 0, 393338, 0, 0, 393339, 0, 0, 393340, 0, 0, 393348, 0, 0, 393349, 0, 0, 393350, 0, 0, 393356, 0, 0, 393357, 0, 0, 393358, 0, 0, 393390, 0, 0, 393408, 0, 0, 393409, 0, 0, 393410, 0, 0, 458852, 0, 0, 458853, 0, 0, 458854, 0, 0, 458855, 0, 0, 458856, 0, 0, 458857, 0, 0, 458858, 0, 0, 458859, 0, 0, 458860, 0, 0, 458861, 0, 0, 458862, 0, 0, 458863, 0, 0, 458864, 0, 0, 458865, 0, 0, 458866, 0, 0, 458867, 0, 0, 458868, 0, 0, 458869, 0, 0, 458877, 0, 0, 458878, 0, 0, 458879, 0, 0, 458883, 0, 0, 458884, 0, 0, 458890, 0, 0, 458891, 0, 0, 458925, 0, 0, 458947, 0, 0, 458948, 0, 0, 458949, 0, 0, 524374, 0, 0, 524375, 0, 0, 524376, 0, 0, 524377, 0, 0, 524378, 0, 0, 524379, 0, 0, 524380, 0, 0, 524381, 0, 0, 524382, 0, 0, 524383, 0, 0, 524413, 0, 0, 524414, 0, 0, 524418, 0, 0, 524426, 0, 0, 524460, 0, 0, 524461, 0, 0, 524484, 0, 0, 524506, 0, 0, 524507, 0, 0, 524508, 0, 0, 524512, 0, 0, 524513, 0, 0, 524562, 0, 0, 524563, 0, 0, 524564, 0, 0, 589877, 0, 0, 589878, 0, 0, 589879, 0, 0, 589880, 0, 0, 589881, 0, 0, 589882, 0, 0, 589883, 0, 0, 589884, 0, 0, 589885, 0, 0, 589886, 0, 0, 589887, 0, 0, 589888, 0, 0, 589889, 0, 0, 589890, 0, 0, 589891, 0, 0, 589892, 0, 0, 589962, 0, 0, 589963, 0, 0, 589964, 0, 0, 589965, 0, 0, 589966, 0, 0, 589970, 0, 0, 589971, 0, 0, 589972, 0, 0, 589973, 0, 0, 589974, 0, 0, 589975, 0, 0, 589976, 0, 0, 589977, 0, 0, 589978, 0, 0, 589979, 0, 0, 589993, 0, 0, 589994, 0, 0, 589995, 0, 0, 590020, 0, 0, 590040, 0, 0, 590041, 0, 0, 590042, 0, 0, 590048, 0, 0, 590049, 0, 0, 590050, 0, 0, 590051, 0, 0, 590057, 0, 0, 590058, 0, 0, 590062, 0, 0, 590063, 0, 0, 590064, 0, 0, 590065, 0, 0, 590066, 0, 0, 590067, 0, 0, 590073, 0, 0, 590074, 0, 0, 590075, 0, 0, 590076, 0, 0, 590091, 0, 0, 590092, 0, 0, 590093, 0, 0, 590094, 0, 0, 590095, 0, 0, 590096, 0, 0, 590097, 0, 0, 590098, 0, 0, 590100, 0, 0, 590101, 0, 0, 590102, 0, 0, 590103, 0, 0, 590104, 0, 0, 590105, 0, 0, 590107, 0, 0, 590108, 0, 0, 590109, 0, 0, 590110, 0, 0, 590111, 0, 0, 590112, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0, 655382, 0, 0, 655383, 0, 0, 655384, 0, 0, 655385, 0, 0, 655386, 0, 0, 655387, 0, 0, 655388, 0, 0, 655389, 0, 0, 655390, 0, 0, 655391, 0, 0, 655392, 0, 0, 655393, 0, 0, 655400, 0, 0, 655401, 0, 0, 655402, 0, 0, 655403, 0, 0, 655404, 0, 0, 655405, 0, 0, 655406, 0, 0, 655407, 0, 0, 655408, 0, 0, 655503, 0, 0, 655504, 0, 0, 655505, 0, 0, 655515, 0, 0, 655516, 0, 0, 655517, 0, 0, 655518, 0, 0, 655522, 0, 0, 655523, 0, 0, 655524, 0, 0, 655525, 0, 0, 655526, 0, 0, 655527, 0, 0, 655528, 0, 0, 655556, 0, 0, 655572, 0, 0, 655573, 0, 0, 655574, 0, 0, 655575, 0, 0, 655576, 0, 0, 655588, 0, 0, 655612, 0, 0, 655613, 0, 0, 655614, 0, 0, 655615, 0, 0, 655616, 0, 0, 655617, 0, 0, 655618, 0, 0, 655619, 0, 0, 655620, 0, 0, 655621, 0, 0, 655622, 0, 0, 655623, 0, 0, 655624, 0, 0, 655625, 0, 0, 655626, 0, 0, 655627, 0, 0, 655640, 0, 0, 655641, 0, 0, 655642, 0, 0, 655643, 0, 0, 655648, 0, 0, 655649, 0, 0, 655650, 0, 0, 655651, 0, 0, 655652, 0, 0, 655653, 0, 0, 655654, 0, 0, 655655, 0, 0, 655656, 0, 0, 655657, 0, 0, 655658, 0, 0, 655659, 0, 0, 655660, 0, 0, 655661, 0, 0, 655662, 0, 0, 655663, 0, 0, 655664, 0, 0, 655665, 0, 0, 655666, 0, 0, 655667, 0, 0, 655668, 0, 0, 655669, 0, 0, 655670, 0, 0, 655671, 0, 0, 655672, 0, 0, 655673, 0, 0, 655674, 0, 0, 655675, 0, 0, 655676, 0, 0, 721091, 0, 0, 721092, 0, 0, 721104, 0, 0, 721105, 0, 0, 721106, 0, 0, 721107, 0, 0, 721108, 0, 0, 786627, 0, 0, 786628, 0, 0, 786629, 0, 0, 786638, 0, 0, 786639, 0, 0, 852166, 0, 0, 852167, 0, 0, 852168, 0, 0, 852169, 0, 0, 852170, 0, 0, 852171, 0, 0, 852172, 0, 0, 852173, 0, 0 )
+
+[node name="Objects" parent="." index="2"]
+tile_data = PoolIntArray( -720743, 1, 0, -196398, 1, 0, 65651, 1, 0, 65908, 0, 0, 197121, 1, 0, 197181, 1, 0, 262403, 0, 0, 524584, 0, 0, 524856, 0, 0, 524857, 0, 0, 590216, 1, 0, 655379, 0, 0, 655398, 0, 0, 655419, 0, 0, 655441, 0, 0, 655446, 0, 0, 655449, 0, 0, 655644, 0, 0, 655956, 0, 0, 655959, 0, 0, 655960, 0, 0, 655962, 0, 0 )
+
+[node name="gift" type="Node2D" parent="." index="5"]
+
+[node name="gift" parent="gift" index="0" instance=ExtResource( 3 )]
+position = Vector2( 809, 295 )
+
+[node name="gift2" parent="gift" index="1" instance=ExtResource( 3 )]
+position = Vector2( 1133, 213 )
+
+[node name="gift3" parent="gift" index="2" instance=ExtResource( 3 )]
+position = Vector2( 1209, 169 )
+
+[node name="gift4" parent="gift" index="3" instance=ExtResource( 3 )]
+position = Vector2( 1275, 219 )
+
+[node name="gift5" parent="gift" index="4" instance=ExtResource( 3 )]
+position = Vector2( 1609, 209 )
+
+[node name="gift6" parent="gift" index="5" instance=ExtResource( 3 )]
+position = Vector2( 1929, 269 )
+
+[node name="gift7" parent="gift" index="6" instance=ExtResource( 3 )]
+position = Vector2( 2393, 73 )
+
+[node name="gift8" parent="gift" index="7" instance=ExtResource( 3 )]
+position = Vector2( 2659, 55 )
+
+[node name="gift9" parent="gift" index="8" instance=ExtResource( 3 )]
+position = Vector2( 2993, 209 )
+
+[node name="gift10" parent="gift" index="9" instance=ExtResource( 3 )]
+position = Vector2( 4674, -30 )
+
+[node name="gift11" parent="gift" index="10" instance=ExtResource( 3 )]
+position = Vector2( 4766, -74 )
+
+[node name="gift12" parent="gift" index="11" instance=ExtResource( 3 )]
+position = Vector2( 4844, -39 )
+
+[node name="gift13" parent="gift" index="12" instance=ExtResource( 3 )]
+position = Vector2( 4909, 24 )
+
+[node name="gift14" parent="gift" index="13" instance=ExtResource( 3 )]
+position = Vector2( 4977, 110 )
+
+[node name="gift15" parent="gift" index="14" instance=ExtResource( 3 )]
+position = Vector2( 5786, 68 )
+
+[node name="gift16" parent="gift" index="15" instance=ExtResource( 3 )]
+position = Vector2( 6008, 122 )
+
+[node name="gift17" parent="gift" index="16" instance=ExtResource( 3 )]
+position = Vector2( 7106, 142 )
+
+[node name="gift18" parent="gift" index="17" instance=ExtResource( 3 )]
+position = Vector2( 7883, 163 )
+
+[node name="gift19" parent="gift" index="18" instance=ExtResource( 3 )]
+position = Vector2( 7954, 163 )
+
+[node name="gift20" parent="gift" index="19" instance=ExtResource( 3 )]
+position = Vector2( 8806, 216 )
+scale = Vector2( 0.4, 0.4 )
+script = SubResource( 1 )
+
+[node name="enemies" type="Node2D" parent="." index="6"]
+
+[node name="spikeman" parent="enemies" index="0" instance=ExtResource( 4 )]
+position = Vector2( 2170, 251 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="spikeman2" parent="enemies" index="1" instance=ExtResource( 4 )]
+position = Vector2( 2823, 216 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="spikeman3" parent="enemies" index="2" instance=ExtResource( 4 )]
+position = Vector2( 3645, 184 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="spikeman4" parent="enemies" index="3" instance=ExtResource( 4 )]
+position = Vector2( 4931, 249 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="spikeman5" parent="enemies" index="4" instance=ExtResource( 4 )]
+position = Vector2( 5467, 250 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="spikeman6" parent="enemies" index="5" instance=ExtResource( 4 )]
+position = Vector2( 6549, 378 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="spikeman7" parent="enemies" index="6" instance=ExtResource( 4 )]
+position = Vector2( 7276, 247 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="spikeman8" parent="enemies" index="7" instance=ExtResource( 4 )]
+position = Vector2( 8467, 274 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="spikeman9" parent="enemies" index="8" instance=ExtResource( 4 )]
+position = Vector2( 8987, 250 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="FinalFase" parent="." index="7" instance=ExtResource( 2 )]
+position = Vector2( 9964, 270 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource( 5 )
+bus = "music"

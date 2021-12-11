@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/gui/freegui/png/aseChange/table.png" type="Texture" id=1]
 [ext_resource path="res://assets/gui/freegui/png/aseChange/buttons/level1.png" type="Texture" id=2]
@@ -7,13 +7,20 @@
 [ext_resource path="res://assets/audio/mixkit-video-game-mystery-alert-234.wav" type="AudioStream" id=5]
 [ext_resource path="res://Scenes/levels/selector/LevelSelector.gd" type="Script" id=6]
 [ext_resource path="res://assets/gui/freegui/png/aseChange/buttons/level2.png" type="Texture" id=7]
+[ext_resource path="res://assets/gui/freegui/png/aseChange/buttons/level3.png" type="Texture" id=8]
+[ext_resource path="res://assets/gui/freegui/png/aseChange/buttons/level4.png" type="Texture" id=9]
+[ext_resource path="res://assets/gui/freegui/png/aseChange/buttons/level2_green.png" type="Texture" id=10]
+[ext_resource path="res://assets/gui/freegui/png/aseChange/buttons/level2_gren.png" type="Texture" id=11]
+[ext_resource path="res://assets/gui/freegui/png/aseChange/buttons/back.png" type="Texture" id=12]
+[ext_resource path="res://assets/gui/freegui/png/aseChange/buttons/back-g.png" type="Texture" id=13]
+[ext_resource path="res://assets/gui/freegui/png/aseChange/buttons/back-r.png" type="Texture" id=14]
 
 [node name="LevelSelector" type="Node"]
 script = ExtResource( 6 )
 
 [node name="back" type="Sprite" parent="."]
-position = Vector2( 505, 293.25 )
-scale = Vector2( 16.7813, 12.066 )
+position = Vector2( 582.999, 293.25 )
+scale = Vector2( 19.2188, 12.066 )
 texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -40,6 +47,7 @@ margin_bottom = 250.0
 rect_scale = Vector2( 1.5, 1.5 )
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -48,13 +56,14 @@ __meta__ = {
 stream = ExtResource( 5 )
 
 [node name="TextureButton2" type="TextureButton" parent="Control"]
-margin_left = 322.0
+margin_left = 364.0
 margin_top = 210.0
-margin_right = 390.0
+margin_right = 432.0
 margin_bottom = 277.0
 rect_scale = Vector2( 1.5, 1.5 )
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 7 )
+texture_hover = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -62,4 +71,52 @@ __meta__ = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/TextureButton2"]
 stream = ExtResource( 5 )
 
+[node name="TextureButton3" type="TextureButton" parent="Control"]
+margin_left = 514.0
+margin_top = 210.0
+margin_right = 582.0
+margin_bottom = 277.0
+rect_scale = Vector2( 1.5, 1.5 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/TextureButton3"]
+stream = ExtResource( 5 )
+
+[node name="TextureButton4" type="TextureButton" parent="Control"]
+margin_left = 664.0
+margin_top = 210.0
+margin_right = 732.0
+margin_bottom = 278.0
+rect_scale = Vector2( 1.5, 1.5 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/TextureButton4"]
+stream = ExtResource( 5 )
+
+[node name="TextureButton5" type="TextureButton" parent="Control"]
+margin_left = 150.0
+margin_top = 459.0
+margin_right = 252.0
+margin_bottom = 551.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/TextureButton5"]
+stream = ExtResource( 5 )
+
 [connection signal="pressed" from="Control/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="Control/TextureButton2" to="." method="_on_TextureButton2_pressed"]
+[connection signal="pressed" from="Control/TextureButton5" to="." method="_on_TextureButton5_pressed"]
